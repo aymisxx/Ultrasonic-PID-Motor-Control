@@ -109,8 +109,11 @@ docs/project_report.pdf
 
 ---
 
-## **Author**
-## **Ayushman Mishra**  
+# **Author**
+# **Ayushman Mishra**  
+
+LinkedIn: https://www.linkedin.com/in/aymisxx
+
 GitHub: https://github.com/aymisxx
 
 ## **License**
