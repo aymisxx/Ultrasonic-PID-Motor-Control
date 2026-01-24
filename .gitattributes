@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
+# Treat Simulink files as binary
+*.slx binary
+
+# Normalize text files
 * text=auto
