@@ -67,6 +67,7 @@ The PID controller adapts motor speed smoothly as the measured distance varies, 
 Ultrasonic-PID-Motor-Control/
 ├── README.md
 ├── LICENSE
+├── .gitattributes
 ├── .gitignore
 │
 ├── docs/
