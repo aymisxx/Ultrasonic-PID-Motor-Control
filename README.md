@@ -34,7 +34,7 @@ Where:
 The control input $u(t)$, which is mapped to the motor actuation signal (PWM), is computed using a classical PID controller:
 
 $$
-u(t) = K_p e(t) + K_i \int e(t)\\dt + K_d \frac{de(t)}{dt}
+u(t) = K_p e(t) + K_i \int e(t)dt + K_d \frac{de(t)}{dt}
 $$
 
 Where:
