@@ -13,7 +13,7 @@ The system demonstrates **sensor integration, control logic design, embedded dep
 
 ![System Overview](docs/system_overview.png)
 
-## Mathematical Model of Control System
+## **Mathematical Model of Control System**
 
 The system is formulated as a standard closed-loop feedback control problem, where the objective is to regulate motor speed based on a dynamically varying reference derived from ultrasonic distance measurements.
 
@@ -34,7 +34,7 @@ Where:
 The control input $u(t)$, which is mapped to the motor actuation signal (PWM), is computed using a classical PID controller:
 
 $$
-u(t) = K_p e(t) + K_i \int e(t)dt + K_d \frac{de(t)}{dt}
+u(t) = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}
 $$
 
 Where:
@@ -44,13 +44,13 @@ Where:
 
 ### Term-wise Interpretation
 
-- **Proportional Term ($K_p e(t)$)**  
+- **Proportional Term**  
   Provides immediate response to the current error. Higher values increase responsiveness but may induce oscillations.
 
-- **Integral Term ($K_i \int e(t)\,dt$)**  
+- **Integral Term**  
   Accumulates past error to eliminate steady-state offset caused by system nonlinearities such as friction and load variations.
 
-- **Derivative Term ($K_d \frac{de(t)}{dt}$)**  
+- **Derivative Term**  
   Predicts future error trends and adds damping, improving transient response and reducing overshoot.
 
 ### Control-to-Actuation Mapping
