@@ -13,6 +13,70 @@ The system demonstrates **sensor integration, control logic design, embedded dep
 
 ![System Overview](docs/system_overview.png)
 
+## Mathematical Model of Control System
+
+The system is formulated as a standard closed-loop feedback control problem, where the objective is to regulate motor speed based on a dynamically varying reference derived from ultrasonic distance measurements.
+
+### Error Definition
+
+The control error is defined as:
+
+$$
+e(t) = r(t) - y(t)
+$$
+
+Where:
+- $r(t)$: Reference signal (distance-based input from ultrasonic sensor).
+- $y(t)$: System output (measured motor speed from encoder).
+
+### PID Control Law
+
+The control input $u(t)$, which is mapped to the motor actuation signal (PWM), is computed using a classical PID controller:
+
+$$
+u(t) = K_p e(t) + K_i \int e(t)\,dt + K_d \frac{de(t)}{dt}
+$$
+
+Where:
+- $K_p$: Proportional gain.
+- $K_i$: Integral gain.
+- $K_d$: Derivative gain.
+
+### Term-wise Interpretation
+
+- **Proportional Term ($K_p e(t)$)**  
+  Provides immediate response to the current error. Higher values increase responsiveness but may induce oscillations.
+
+- **Integral Term ($K_i \int e(t)\,dt$)**  
+  Accumulates past error to eliminate steady-state offset caused by system nonlinearities such as friction and load variations.
+
+- **Derivative Term ($K_d \frac{de(t)}{dt}$)**  
+  Predicts future error trends and adds damping, improving transient response and reducing overshoot.
+
+### Control-to-Actuation Mapping
+
+The continuous control signal $u(t)$ is converted into a PWM duty cycle:
+
+$$
+V_{\text{avg}} = D \cdot V_{\text{max}}, \quad D \in [0,1]
+$$
+
+Where:
+- $D$: Duty cycle corresponding to normalized control input.
+- $V_{\text{max}}$: Supply voltage to the motor driver.
+
+This PWM signal is applied via the L298N motor driver to regulate motor speed.
+
+### System Interpretation
+
+The complete control loop can be summarized as:
+
+$$
+\text{Distance (Sensor)} \rightarrow r(t) \rightarrow e(t) \rightarrow \text{PID} \rightarrow u(t) \rightarrow \text{PWM} \rightarrow \text{Motor} \rightarrow y(t)
+$$
+
+This represents a real-time feedback system where the controller continuously adjusts motor input to track a dynamically changing reference signal.
+
 **Control flow:**
 
 ```
